@@ -1,0 +1,14 @@
+{
+  "name": "instagram-api",
+  "version": "1.0.0",
+  "description": "Restful API for Instagram Clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jade Kang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
