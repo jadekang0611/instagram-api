@@ -4,11 +4,6 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user');
 
-// GET /register
-router.get('/', (req, res, next) => {
-  res.send('Register');
-});
-
 // POST /register
 router.post('/', async (req, res, next) => {
   if (req.body.name && req.body.email && req.body.password) {

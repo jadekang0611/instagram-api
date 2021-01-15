@@ -10,6 +10,7 @@ require('dotenv/config');
 
 // Import Routes
 const registerRoute = require('./routes/register');
+const signinRoute = require('./routes/signin');
 
 // My Middlewares
 
@@ -36,6 +37,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/register', registerRoute);
+app.use('/signin', signinRoute);
 
 // app.use((req, res, next) => {
 //   res.send('Hello World');
