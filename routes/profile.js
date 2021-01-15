@@ -8,6 +8,8 @@ router.get('/', (req, res, next) => {
   User.findById(req.session.userId).exec((err, user) => {
     if (err) {
       res.status(401).send({ loggedin: false });
+    } else if (user === null) {
+      res.status(200).send({ loggedin: false });
     } else {
       console.log(user);
       res.status(200).send({ user: user, loggedin: true });
