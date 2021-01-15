@@ -6,6 +6,8 @@ const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 
+const cors = require('cors');
+
 require('dotenv/config');
 
 // Import Routes
@@ -38,6 +40,7 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/register', registerRoute);
 app.use('/signin', signinRoute);
 app.use('/profile', profileRoute);

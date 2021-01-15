@@ -8,5 +8,4 @@ const requiresSignin = (req, res, next) => {
   }
 };
 
-module.exports.loggedOut = loggedOut;
 module.exports.requiresSignin = requiresSignin;
