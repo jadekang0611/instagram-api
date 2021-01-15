@@ -6,10 +6,8 @@ const User = require('../models/user');
 // ADD the custom middleware to make it a more logical and simpler protected route
 router.get('/', (req, res, next) => {
   User.findById(req.session.userId).exec((err, user) => {
-    if (err) {
+    if (user === null) {
       res.status(401).send({ loggedin: false });
-    } else if (user === null) {
-      res.status(200).send({ loggedin: false });
     } else {
       console.log(user);
       res.status(200).send({ user: user, loggedin: true });
