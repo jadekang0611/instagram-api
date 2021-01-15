@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const middleware = require('../middleware');
 const User = require('../models/user');
 
 // GET /register
 // ADD the custom middleware to make it a more logical and simpler protected route
-router.get('/', middleware.requiresSignin, (req, res, next) => {
+router.get('/', (req, res, next) => {
   User.findById(req.session.userId).exec((err, user) => {
     if (err) {
       res.status(401).send({ loggedin: false });
@@ -15,5 +14,7 @@ router.get('/', middleware.requiresSignin, (req, res, next) => {
     }
   });
 });
+
+router.get('/');
 
 module.exports = router;
