@@ -9,6 +9,7 @@ const app = express();
 require('dotenv/config');
 
 // Import Routes
+const registerRoute = require('./routes/register');
 
 // My Middlewares
 
@@ -19,9 +20,26 @@ mongoose.connect(
   () => console.log('DB connected')
 );
 
-app.use((req, res, next) => {
-  res.send('Hello World');
-});
+const db = mongoose.connection;
+
+app.use(
+  session({
+    secret: 'Instagram Loves You',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: db,
+    }),
+  })
+);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use('/register', registerRoute);
+
+// app.use((req, res, next) => {
+//   res.send('Hello World');
+// });
 
 // Add a method to listen to my server
 const PORT = process.env.PORT || 8000;
