@@ -19,6 +19,7 @@ router.post('/', async (req, res, next) => {
     try {
       const saveduser = await user.save();
       req.session.userId = user._id;
+      req.session.lastuserId = user._id;
       res.status(200).send({ saveduser: saveduser, loggedin: true });
     } catch (e) {
       console.log(e);

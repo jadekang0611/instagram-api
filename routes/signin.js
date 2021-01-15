@@ -16,6 +16,7 @@ router.post('/', async (req, res, next) => {
     );
     if (!validPassword) return res.status(401).send('Invalid password!');
     req.session.userId = user._id;
+    req.session.lastuserId = user._id;
     res.status(200).send({ user: user, loggedin: true });
   } else {
     res.status(401).send({ loggedin: false });
